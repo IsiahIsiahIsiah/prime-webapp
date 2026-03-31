@@ -1,3 +1,21 @@
-# Isiah Toilalo's Webapp Portfolio
+# bun-react-tailwind-shadcn-template
 
-This is the files for the website to demonstrate the work that I have done. This app is going to show off my capabilities across various areas. Works that I have completed over the years. This webapp is designed to operate like a resume, that new clients and employers can view to see my talents and capabilities.
+To install dependencies:
+
+```bash
+bun install
+```
+
+To start a development server:
+
+```bash
+bun dev
+```
+
+To run for production:
+
+```bash
+bun start
+```
+
+This project was created using `bun init` in bun v1.3.11. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.

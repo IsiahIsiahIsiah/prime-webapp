@@ -1,13 +1,15 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { APITester } from "./APITester";
-import "./index.css";
+import { Hero } from "./sections/Hero";
+import { Projects } from "./sections/Projects";
 
-import logo from "./logo.svg";
-import reactLogo from "./react.svg";
+
+import "./index.css";
+import { Menu } from "lucide-react";
 
 export function App() {
   return (
     <>
+      <Hero />
+      <Projects />
     </>
   );
 }
