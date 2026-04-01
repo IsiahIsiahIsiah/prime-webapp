@@ -8,26 +8,42 @@ export const Card = React.memo(
     card,
     index,
     hovered,
+    type,
+    link,
     setHovered,
   }: {
     card: any;
     index: number;
+    type: string;
+    link: string;
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
   }) => (
+    <a href={link} className="focus-card group">
     <div
       onMouseEnter={() => setHovered(index)}
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-80 w-full transition-all duration-300 ease-out",
+        "rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-60 md:h-60 w-full transition-all duration-300 ease-out",
         hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
       )}
     >
-      <img
-        src={card.src}
-        alt={card.title}
-        className="object-cover w-full h-full absolute inset-0"
-      />
+      {type === "film" ? (
+        <video
+          src={card.src}
+          className="object-cover w-full h-full absolute inset-0"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      ) : (
+        <img
+          src={card.src}
+          alt={card.title}
+          className="object-cover w-full h-full absolute inset-0"
+        />
+      )}
       <div
         className={cn(
           "absolute inset-0 bg-black/50 flex items-end py-8 px-4 transition-opacity duration-300",
@@ -39,6 +55,7 @@ export const Card = React.memo(
         </div>
       </div>
     </div>
+    </a>
   )
 );
 
@@ -46,7 +63,9 @@ Card.displayName = "Card";
 
 type Card = {
   title: string;
-  src: string;
+  src: string; 
+  type: string;
+  link: string;
 };
 
 export function FocusCards({ cards }: { cards: Card[] }) {
@@ -61,6 +80,8 @@ export function FocusCards({ cards }: { cards: Card[] }) {
           index={index}
           hovered={hovered}
           setHovered={setHovered}
+          type={card.type}
+          link={card.src}
         />
       ))}
     </div>
